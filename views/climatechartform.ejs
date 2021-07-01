@@ -1,0 +1,87 @@
+<%- include('bootheader') -%>
+
+<%- include('menubar') -%>
+  <div class="jumbotron">
+    <h1 class = "display-1"> Climate chart form  <%= user.googlename %> </h1>
+    <p class = "lead"> Please input data for chart </p>
+  </div>
+
+  <form method="post" action="/todo/showmonthlyDataforChart" class = "bg-white">
+      <label for="exampleFormControlInput1" class="form-label">Please select a country of your choice.</label>
+      <select name="country" class="form-select" aria-label="Default select example">
+        <option selected>Choose a country</option>
+        <option value = "USA">United States</option>
+        <option value = "BRA">Brazil</option>
+        <option value = "JPN">Japan</option>
+        <option value = "BHS">Bahamas</option>
+        <option value = "BRN">Brunei</option>
+        <option value = "BWA">Botswana</option>
+        <option value = "CAN">Canada</option>
+        <option value = "CHE">Switzerland</option>
+        <option value = "CHL">Chile</option>
+        <option value = "CHN">China</option>
+
+      </select>
+      <hr>
+      <label for="exampleFormControlInput1" class="form-label">Please choose one feature you would like to see.</label><br>
+      <input class="form-check-input" type="radio" name="datafeature" value="mavg" id="mavg">
+      <label for="mavg" class = "form-check-label">
+        monthly average
+      </label>
+      <br>
+
+
+      <label for="exampleFormControlInput1" class="form-label">Please select the type of data you want to view.</label>
+      <select name="datatype" class="form-select" aria-label="Default select example">
+        <option value = "pr">precipitation</option>
+        <option value = "tas">temperature</option>
+        <br>
+      </select>
+      <hr>
+      <p class = "lead">Choose the start and end year.<br> If you have chosen mavg or annualavg, then the start year should be before 2020 and its should have 0 as the last digit. The end year should be before 2039 and its value should have 9 as the last digit.
+      <br> If you have chosen manom or annualanom, then the start year value should be at least 2020 and have 0 as the last digit. The end year value should be at least 2039 and have 9 as the last digit.
+      <br> Remember: the values for the start and the end year must have a difference of 19 years in order for the data to display correctly.
+      </p>
+      <label for="exampleFormControlInput1" class="form-label">Start Year</label>
+      <select name="startyear" class="form-select" aria-label="Default select example">
+        <option value = "1920">1920</option>
+        <option value = "1940">1940</option>
+        <option value = "1960">1960</option>
+        <option value = "1980">1980</option>
+        <option value = "2020">2020</option>
+        <option value = "2040">2040</option>
+        <option value = "2060">2060</option>
+        <option value = "2080">2080</option>
+        <br>
+      </select>
+      <br>
+      <label for="exampleFormControlInput1" class="form-label">End Year</label>
+      <select name="endyear" class="form-select" aria-label="Default select example">
+        <option value = "1939">1939</option>
+        <option value = "1959">1959</option>
+        <option value = "1979">1979</option>
+        <option value = "1999">1999</option>
+        <option value = "2039">2039</option>
+        <option value = "2059">2059</option>
+        <option value = "2079">2079</option>
+        <option value = "2099">2099</option>
+        <br>
+      </select>
+      <br>
+      <label for="exampleFormControlInput1" class="form-label">What would you like to call this data search?</label><br>
+      <input type="text" name="datasearchname">
+      <br>
+      <input type="submit" value = "View Data">
+  </form>
+
+
+
+
+
+
+
+
+
+
+
+<%- include('bootfooter') -%>

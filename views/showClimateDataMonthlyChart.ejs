@@ -1,0 +1,150 @@
+<%- include('bootheader') -%>
+
+<%- include('menubar') -%>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+
+
+
+
+
+    <div class="row">
+        <div class="col">
+
+          <pre><%= JSON.stringify(results,null,5) %> </pre>
+
+
+              <% for (j=0; j<results.length;j+=5) { %>
+                <div style="border-top:thick solid blue; margin:20; padding:10">
+                  <% if (results[j].variable == 'pr') { %>
+                    <h1>  Monthly Precipitation data for <%=results[j].fromYear+j%> </h1>
+                      <canvas id="myChartA<%=j%>"></canvas>
+                      <script>
+
+
+                          var ctxgod = document.getElementById("myChartA<%=j%>").getContext('2d');
+                          var config = {
+                             type: 'bar',
+                             data: {
+                                labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                                datasets: [{
+                                  label: 'Precipitation Data',
+                                   data:<%= JSON.stringify(results[j].monthVals) %> ,
+                                   backgroundColor: 'rgba(0, 119, 204, 0.3)'
+                                }]
+                             },
+
+                             options: {
+                                 title: {
+                                   display: true,
+                                   text: 'Chart Title',
+                                    position: 'bottom'
+                                 },
+                                 scales: {
+                                   xAxes: [{
+                                     scaleLabel: {
+                                             display: true,
+                                             labelString: 'probability'
+                                           },
+                                     ticks: {
+                                       beginAtZero: true
+                                     }
+                                   }]
+                                 },
+
+                                 layout: {
+                                       padding: {
+                                         top: 40,
+                                        bottom: 40
+                                       }
+                                     },
+                          }
+                          }
+
+
+                          var chart = new Chart(ctxgod, config);
+
+
+                      </script>
+
+
+                  <%} else { %>
+                      <h1> Monthly Temperature data for <%= results[j].fromYear+j %> </h1>
+                      <canvas id="myChartB<%=j%>"></canvas>
+                      <script>
+                          var ctxgod = document.getElementById("myChartB<%=j%>").getContext('2d');
+                          var config = {
+                             type: 'bar',
+                             data: {
+                                labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                                datasets: [{
+                                  label: 'Temperature Data',
+                                   data:<%= JSON.stringify(results[j].monthVals) %> ,
+                                   backgroundColor: 'rgba(0, 119, 204, 0.3)'
+                                }]
+                             },
+
+                             options: {
+                                 title: {
+                                   display: true,
+                                   text: 'Chart Title',
+                                    position: 'bottom'
+                                 },
+                                 scales: {
+                                   xAxes: [{
+                                     scaleLabel: {
+                                             display: true,
+                                             labelString: 'probability'
+                                           },
+                                     ticks: {
+                                       beginAtZero: true
+                                     }
+                                   }]
+                                 },
+
+                                 layout: {
+                                       padding: {
+                                         top: 40,
+                                        bottom: 40
+                                       }
+                                     },
+                          }
+                          }
+
+
+                          var chart = new Chart(ctxgod, config);
+
+
+                      </script>
+
+
+                  <%  } %>
+                  <%}%>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<%- include('bootfooter') -%>

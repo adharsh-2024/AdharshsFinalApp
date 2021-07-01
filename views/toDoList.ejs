@@ -1,0 +1,110 @@
+<%- include('bootheader') -%>
+
+<%- include('menubar') -%>
+  <div class="jumbotron">
+    <h1 class = "display-1"> Climate Searches List <%= user.googlename %> </h1>
+    <p class = "lead"> Here are all of your searches you made for viewing climate data.</p>
+  </div>
+
+
+  <!-- <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed show" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Accordion Item #1
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          Accordion Item #2
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+          Accordion Item #3
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne2">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+        Accordion Item #1
+      </button>
+    </h2>
+    <div id="collapseOne2" class="accordion-collapse collapse show" aria-labelledby="headingOne2" data-bs-parent="#accordionExample2">
+      <div class="accordion-body">
+        <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div> -->
+
+
+
+  <div class="accordion" id="accordionPanelsStayOpenExample2">
+    <%
+      let idd = 1;
+      let idstring = ""
+       items.forEach(item => {
+         idd=idd+1;
+         idstring = "my"+idd;
+         hashstring = "#"+idstring
+      %>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="h<%=idd%>">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" aria-controls=<%=idstring%> aria-expanded="false" data-bs-target=<%=hashstring%>>
+
+      <h3>  <%=item.searchname %> </h3>
+
+      </button>
+      <hr>
+    </h2>
+
+    <div id=<%=idstring%> class="accordion-collapse collapse show"  data-bs-parent="#accordionPanelsStayOpenExample2" aria-labelledby="h<%=idd %>">
+      <div class="accordion-body">
+        <strong>What you had wanted to view in your data: </strong>
+        <a class="btn btn-primary" href="/todo/remove/<%=item._id%>" role="button">Remove search</a>
+        <br>
+        <br>
+          <ul class="list-group">
+            <li class = "list-group-item">Country: <%= item.country %></li>
+            <li class = "list-group-item">Data feature: <%= item.frequency %></li>
+            <li class = "list-group-item">Data Type: <%= item.feature %></li>
+            <li class = "list-group-item">Start Year: <%= item.startYear %></li>
+            <li class = "list-group-item">End Year: <%= item.endYear %></li>
+          </ul>
+        <br>
+      </div>
+  </div>
+</div>
+<% }) %>
+</div>
+
+
+
+
+
+
+
+
+
+<%- include('bootfooter') -%>

@@ -1,0 +1,29 @@
+<%- include('bootheader') -%>
+
+<%- include('menubar') -%>
+
+
+
+
+<% results.map((data) => {%>
+  <div class="jumbotron">
+  <h1 class = "display-1"> <%= feature %> from <%= data.fromYear %> to <%= data.toYear %></h1>
+  </div>
+<div style="border-top:thick solid blue; margin:20; padding:10">
+
+    <div class="row">
+        <div class="col">
+
+            <ol class="list-group list-group-numbered">
+            <% data.annualData.map((i) => {%>
+                <li class = "list-group-item"> <%= i %>  </li>
+            <%})%>
+            </ol>
+        </div>
+   </div>
+</div>
+<%})%>
+
+
+
+<%- include('bootfooter') -%>
