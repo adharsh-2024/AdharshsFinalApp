@@ -2,35 +2,40 @@
 
 <%- include('menubar') -%>
 
+<h1 class = "display-1"> <%= feature %> </h1>
+<br>
 
+<%
+   let montharray =  ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+   let monthcounter = -1
+%>
 
-
-
-<% results.map((data) => {%>
-  <div class="jumbotron">
-    <h1 class = "display-1"> <%= feature %> from <%= data.fromYear %> to <%= data.toYear %></h1>
-  </div>
+<% for (j=0; j<results.length;j+=5) { %>
+  <% monthcounter = -1 %>
+    <h1 class = "display-1"> Year: <%= results[j].fromYear+j%> </h1>
 <div style="border-top:thick solid blue; margin:20; padding:10">
 
     <div class="row">
         <div class="col">
-
             <ol class="list-group list-group-numbered">
-            <% data.monthVals.map((i) => {%>
-                <li class = "list-group-item"> <%= i %>  </li>
+            <% results[j].monthVals.map((i) => {%>
+                <% monthcounter += 1 %>
+                <li class = "list-group-item"> <%= montharray[monthcounter] %>: <%= i %></li>
             <%})%>
             </ol>
         </div>
    </div>
 </div>
-<%})%>
+<br>
+<%}%>
 
 
 
 
 
 
-<%= JSON.stringify(results) %>
+
+
 
 
 <%- include('bootfooter') -%>

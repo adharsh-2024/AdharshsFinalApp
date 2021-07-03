@@ -2,7 +2,7 @@
 
 <%- include('menubar') -%>
   <div class="jumbotron">
-    <h1 class = "display-1"> Climate Searches List <%= user.googlename %> </h1>
+    <h1 class = "display-1"> Climate Searches List made by <%= user.googlename %> </h1>
     <p class = "lead"> Here are all of your searches you made for viewing climate data.</p>
   </div>
 
@@ -82,7 +82,7 @@
     <div id=<%=idstring%> class="accordion-collapse collapse show"  data-bs-parent="#accordionPanelsStayOpenExample2" aria-labelledby="h<%=idd %>">
       <div class="accordion-body">
         <strong>What you had wanted to view in your data: </strong>
-        <a class="btn btn-primary" href="/todo/remove/<%=item._id%>" role="button">Remove search</a>
+        <a class="btn btn-primary" href="/theclimate/remove/<%=item._id%>" role="button">Remove search</a>
         <br>
         <br>
           <ul class="list-group">

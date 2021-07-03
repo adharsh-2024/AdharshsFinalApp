@@ -29,7 +29,7 @@ const isLoggedIn = authRouter.isLoggedIn
 const loggingRouter = require('./routes/logging');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const toDoRouter = require('./routes/todo');
+const theclimateRouter = require('./routes/theclimate');
 
 
 
@@ -56,7 +56,7 @@ app.use(loggingRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-app.use('/todo',toDoRouter);
+app.use('/theclimate',theclimateRouter);
 
 
 
